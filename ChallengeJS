@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<body>
+<script>
+
+const DINEROBANCO=363;
+const PRECIO_CELULAR=300;
+const ACCESORIO=15;
+const IVA=.10;
+var dineroRestante=0;
+
+	
+
+	dineroRestante=DINEROBANCO;
+	while(dineroRestante<=DINEROBANCO && dineroRestante>=0){	
+	var monto=0;	
+		console.log("Dinero Restante.................................. "+dineroRestante);
+		
+	
+		
+		console.log("Costo Celular: "+PRECIO_CELULAR);
+		var accesorio=accesories(monto,dineroRestante);
+		monto=PRECIO_CELULAR+accesorio;
+		console.log("Costo Celular:"+PRECIO_CELULAR+" Accesorio: "+accesorio+" Total:"+monto);
+		console.log("Resultado SIN taxi: "+monto);
+		monto=CalcularTaxi(monto)+monto;
+		console.log("Resultado CON taxi: "+monto);
+		
+		dineroRestante=dineroRestante-monto;
+		if(dineroRestante<0){
+			console.log("No tienes Dinero suficiente: ");	
+		}else{				
+		console.log("Tu compra: "+formatAmount(monto));
+		}
+		
+		
+	}
+
+
+function accesories(monto,dineroRestante){
+	var money=0;
+	if(monto<dineroRestante){	
+		money=monto+ACCESORIO;	
+		console.log("Costo ACCESORIO: "+ACCESORIO);
+	}else{
+		console.log("No puedes Comprarlo: ");
+	}	
+	return money;
+}
+
+
+function CalcularTaxi(monto){	
+	var restanteTaxi=monto*IVA;
+	console.log("porcentaje Taxi: "+restanteTaxi);
+	return restanteTaxi;
+}
+
+function formatAmount(cantidad){
+	return "$"+cantidad.toFixed(2);
+}
+
+</script>
+
+</body>
+</html> 
